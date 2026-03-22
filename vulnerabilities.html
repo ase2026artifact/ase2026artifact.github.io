@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerability Details — ASE 2026 Artifact</title>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/2.2.0/css/searchPanes.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.7.0/css/select.bootstrap5.min.css">
+    <!-- Bootstrap 5 (for DataTables styling) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <style>
+        :root {
+            --primary: #1a56db;
+            --primary-dark: #1240a8;
+            --bg: #f8f9fb;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+        }
+
+        /* ── Header ── */
+        .page-header {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            color: #fff;
+            padding: 2rem 2rem 1.5rem;
+        }
+        .page-header .back-link {
+            color: #a5b4fc;
+            text-decoration: none;
+            font-size: 0.88rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-bottom: 0.75rem;
+        }
+        .page-header .back-link:hover { color: #fff; }
+        .page-header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        .page-header p {
+            color: #c7d2fe;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* ── Main content ── */
+        .container-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ── Notice ── */
+        .notice {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-left: 4px solid #d97706;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .notice strong { color: #92400e; }
+
+        /* ── Stats bar ── */
+        .stats-bar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+        }
+        .stat-card .num {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1.2;
+        }
+        .stat-card .label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── Table card ── */
+        .table-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+
+        /* ── Status badges ── */
+        .status-reported {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .status-confirmed {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #dcfce7;
+            color: #166534;
+        }
+        .status-fixed {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* ── Severity badges ── */
+        .severity-critical {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #fce4ec;
+            color: #b71c1c;
+        }
+        .severity-high {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #fff3e0;
+            color: #e65100;
+        }
+        .severity-medium {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .severity-low {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        /* ── DataTables overrides ── */
+        .dataTables_wrapper .dataTables_filter input {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.4rem 0.75rem;
+            font-size: 0.88rem;
+        }
+        .dataTables_wrapper .dataTables_length select {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.3rem 0.5rem;
+        }
+        .dataTables_wrapper .dt-buttons .btn {
+            font-size: 0.82rem;
+            border-radius: 6px;
+            margin-right: 0.3rem;
+        }
+        table.dataTable thead th {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        table.dataTable tbody td {
+            font-size: 0.88rem;
+            vertical-align: middle;
+        }
+        table.dataTable tbody td code {
+            background: #f1f5f9;
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container-main { padding: 1rem; }
+            .stats-bar { gap: 0.5rem; }
+            .stat-card { min-width: 80px; padding: 0.75rem; }
+            .stat-card .num { font-size: 1.3rem; }
+            .table-card { padding: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════════════════ HEADER ════════════════ -->
+<header class="page-header">
+    <div style="max-width:1200px; margin:0 auto;">
+        <a href="index.html" class="back-link">&larr; Back to Artifact</a>
+        <h1>Vulnerability Details</h1>
+        <p>Complete list of discovered vulnerabilities with search, sort, and export</p>
+    </div>
+</header>
+
+<!-- ════════════════ MAIN ════════════════ -->
+<div class="container-main">
+
+    <div class="notice">
+        <strong>Responsible Disclosure:</strong>
+        To protect affected users, we provide descriptions and affected source file names.
+        Full details and proof-of-concept exploits will be released after the camera-ready
+        deadline in coordination with the respective maintainers.
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+        <div class="stat-card">
+            <span class="num" id="stat-total">0</span>
+            <span class="label">Total Found</span>
+        </div>
+        <div class="stat-card">
+            <span class="num" id="stat-cve">0</span>
+            <span class="label">CVEs Assigned</span>
+        </div>
+        <div class="stat-card">
+            <span class="num" id="stat-confirmed">0</span>
+            <span class="label">Confirmed</span>
+        </div>
+        <div class="stat-card">
+            <span class="num" id="stat-projects">0</span>
+            <span class="label">Projects</span>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-card">
+        <table id="vuln-table" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Project</th>
+                    <th>Type</th>
+                    <th>Severity</th>
+                    <th>Description</th>
+                    <th>Affected File</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Populated dynamically from vulnerabilities.json -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer>
+    <p>ASE 2026 Artifact &middot; Anonymous for double-blind review</p>
+</footer>
+
+<!-- ════════════════ SCRIPTS ════════════════ -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+<!-- Buttons -->
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
+
+<script>
+function severityHtml(sev) {
+    return '<span class="severity-' + sev.toLowerCase() + '">' + sev + '</span>';
+}
+function statusHtml(status) {
+    var cls = status === 'Fixed' ? 'status-fixed' :
+              status === 'Confirmed' ? 'status-confirmed' : 'status-reported';
+    return '<span class="' + cls + '">' + status + '</span>';
+}
+
+$.getJSON('vulnerabilities.json', function (data) {
+    // Build rows
+    var rows = data.map(function (v) {
+        return [
+            v.id,
+            v.project,
+            v.type,
+            severityHtml(v.severity),
+            v.description,
+            '<code>' + v.file + '</code>',
+            statusHtml(v.status)
+        ];
+    });
+
+    // Init DataTable
+    var table = $('#vuln-table').DataTable({
+        data: rows,
+        pageLength: 25,
+        order: [[3, 'asc']],
+        dom: '<"row mb-3"<"col-sm-6"l><"col-sm-6"f>>' +
+             '<"row mb-2"<"col-sm-12"B>>' +
+             '<"row"<"col-sm-12"tr>>' +
+             '<"row mt-3"<"col-sm-5"i><"col-sm-7"p>>',
+        buttons: [
+            {
+                extend: 'csvHtml5',
+                text: 'Export CSV',
+                className: 'btn btn-sm btn-outline-secondary',
+                exportOptions: { columns: ':visible' }
+            },
+            {
+                extend: 'excelHtml5',
+                text: 'Export Excel',
+                className: 'btn btn-sm btn-outline-secondary',
+                exportOptions: { columns: ':visible' }
+            },
+            {
+                extend: 'colvis',
+                text: 'Columns',
+                className: 'btn btn-sm btn-outline-secondary'
+            }
+        ],
+        columnDefs: [
+            { targets: [4], orderable: false },
+            {
+                targets: 3,
+                type: 'string',
+                render: function (d, type) {
+                    if (type === 'sort') {
+                        if (d.indexOf('Critical') > -1) return '0';
+                        if (d.indexOf('High') > -1) return '1';
+                        if (d.indexOf('Medium') > -1) return '2';
+                        if (d.indexOf('Low') > -1) return '3';
+                        return '4';
+                    }
+                    return d;
+                }
+            },
+            {
+                targets: 6,
+                type: 'string',
+                render: function (d, type) {
+                    if (type === 'sort') {
+                        if (d.indexOf('Confirmed') > -1) return '0';
+                        if (d.indexOf('Reported') > -1) return '1';
+                        if (d.indexOf('Fixed') > -1) return '2';
+                        return '3';
+                    }
+                    return d;
+                }
+            }
+        ],
+        language: {
+            search: 'Search:',
+            lengthMenu: 'Show _MENU_ entries',
+            info: 'Showing _START_ to _END_ of _TOTAL_ vulnerabilities',
+            emptyTable: 'No vulnerabilities to display'
+        }
+    });
+
+    // Update stats
+    var cveCount = 0, confirmedCount = 0;
+    var projects = new Set();
+    data.forEach(function (v) {
+        if (v.id && v.id.indexOf('XXXXX') === -1) cveCount++;
+        if (v.status === 'Confirmed' || v.status === 'Fixed') confirmedCount++;
+        if (v.project) projects.add(v.project);
+    });
+    $('#stat-total').text(data.length);
+    $('#stat-cve').text(cveCount);
+    $('#stat-confirmed').text(confirmedCount);
+    $('#stat-projects').text(projects.size);
+});
+</script>
+
+</body>
+</html>

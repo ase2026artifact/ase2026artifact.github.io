@@ -1,0 +1,47 @@
+[
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "ProjectA",
+        "type": "Buffer Overflow",
+        "severity": "Critical",
+        "description": "Heap buffer overflow in format parser",
+        "file": "src/parser.c",
+        "status": "Confirmed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "ProjectA",
+        "type": "Use-After-Free",
+        "severity": "High",
+        "description": "Use-after-free in object cleanup",
+        "file": "src/object.c",
+        "status": "Confirmed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "ProjectB",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in size calculation",
+        "file": "lib/alloc.c",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "ProjectC",
+        "type": "Null Dereference",
+        "severity": "Medium",
+        "description": "Null pointer dereference in handler",
+        "file": "src/handler.c",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "ProjectB",
+        "type": "Buffer Overflow",
+        "severity": "Critical",
+        "description": "Stack buffer overflow in decoder",
+        "file": "src/decode.c",
+        "status": "Fixed"
+    }
+]
