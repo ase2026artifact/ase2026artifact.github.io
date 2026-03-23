@@ -1,47 +1,1082 @@
 [
     {
         "id": "CVE-2026-XXXXX",
-        "project": "ProjectA",
+        "project": "FlatBuffers",
+        "tool": "flatc",
         "type": "Buffer Overflow",
-        "severity": "Critical",
-        "description": "Heap buffer overflow in format parser",
-        "file": "src/parser.c",
-        "status": "Confirmed"
-    },
-    {
-        "id": "CVE-2026-XXXXX",
-        "project": "ProjectA",
-        "type": "Use-After-Free",
         "severity": "High",
-        "description": "Use-after-free in object cleanup",
-        "file": "src/object.c",
-        "status": "Confirmed"
+        "description": "Buffer overflow in idl_parser.cpp",
+        "file": "idl_parser.cpp",
+        "status": "Reported"
     },
     {
         "id": "CVE-2026-XXXXX",
-        "project": "ProjectB",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in reflection.cpp",
+        "file": "reflection.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in base.h",
+        "file": "base.h",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in flatc.cpp",
+        "file": "flatc.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in idl_gen_java.cpp",
+        "file": "idl_gen_java.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in base.h",
+        "file": "base.h",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in binary_annotator.h",
+        "file": "binary_annotator.h",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in binary_annotator.h",
+        "file": "binary_annotator.h",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in idl_gen_csharp.cpp",
+        "file": "idl_gen_csharp.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in idl_gen_php.cpp",
+        "file": "idl_gen_php.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in idl_gen_kotlin.cpp",
+        "file": "idl_gen_kotlin.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in idl_gen_go.cpp",
+        "file": "idl_gen_go.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in idl_parser.cpp",
+        "file": "idl_parser.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in binary_annotator.cpp",
+        "file": "binary_annotator.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in idl.h",
+        "file": "idl.h",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in idl_gen_cpp.cpp",
+        "file": "idl_gen_cpp.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in bfbs_gen_nim.cpp",
+        "file": "bfbs_gen_nim.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in idl_parser.cpp",
+        "file": "idl_parser.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in idl_gen_python.cpp",
+        "file": "idl_gen_python.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Assertion Failure",
+        "severity": "High",
+        "description": "Assertion failure in idl_parser.cpp",
+        "file": "idl_parser.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Assertion Failure",
+        "severity": "High",
+        "description": "Assertion failure in flatbuffer_builder.h",
+        "file": "flatbuffer_builder.h",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Assertion Failure",
+        "severity": "High",
+        "description": "Assertion failure in idl_gen_cpp.cpp",
+        "file": "idl_gen_cpp.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Assertion Failure",
+        "severity": "High",
+        "description": "Assertion failure in idl_gen_rust.cpp",
+        "file": "idl_gen_rust.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Assertion Failure",
+        "severity": "High",
+        "description": "Assertion failure in idl_gen_java.cpp",
+        "file": "idl_gen_java.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
         "type": "Integer Overflow",
         "severity": "High",
-        "description": "Integer overflow in size calculation",
-        "file": "lib/alloc.c",
+        "description": "Integer overflow in idl_parser.cpp",
+        "file": "idl_parser.cpp",
         "status": "Reported"
     },
     {
         "id": "CVE-2026-XXXXX",
-        "project": "ProjectC",
-        "type": "Null Dereference",
-        "severity": "Medium",
-        "description": "Null pointer dereference in handler",
-        "file": "src/handler.c",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in idl_parser.cpp",
+        "file": "idl_parser.cpp",
         "status": "Reported"
     },
     {
         "id": "CVE-2026-XXXXX",
-        "project": "ProjectB",
-        "type": "Buffer Overflow",
-        "severity": "Critical",
-        "description": "Stack buffer overflow in decoder",
-        "file": "src/decode.c",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in vector_downward.h",
+        "file": "vector_downward.h",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Type Confusion",
+        "severity": "High",
+        "description": "Type confusion in idl_gen_rust.cpp",
+        "file": "idl_gen_rust.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Type Confusion",
+        "severity": "High",
+        "description": "Type confusion in idl_gen_swift.cpp",
+        "file": "idl_gen_swift.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Type Confusion",
+        "severity": "High",
+        "description": "Type confusion in idl_gen_go.cpp",
+        "file": "idl_gen_go.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Division by Zero",
+        "severity": "High",
+        "description": "Division by zero in idl_parser.cpp",
+        "file": "idl_parser.cpp",
         "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "Stack Overflow",
+        "severity": "High",
+        "description": "Stack overflow in idl_parser.cpp",
+        "file": "idl_parser.cpp",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FlatBuffers",
+        "tool": "flatc",
+        "type": "UAF",
+        "severity": "High",
+        "description": "Use-after-free in idl_parser.cpp, idl.h",
+        "file": "idl_parser.cpp, idl.h",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libsixel",
+        "tool": "img2sixel",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in fromgif.c",
+        "file": "fromgif.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libsixel",
+        "tool": "img2sixel",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in fromgif.c",
+        "file": "fromgif.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libsixel",
+        "tool": "img2sixel",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in encoder.c",
+        "file": "encoder.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libsixel",
+        "tool": "img2sixel",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in encoder.c",
+        "file": "encoder.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libsixel",
+        "tool": "img2sixel",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in encoder.c",
+        "file": "encoder.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libsixel",
+        "tool": "img2sixel",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in quant.c",
+        "file": "quant.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libsixel",
+        "tool": "img2sixel",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in loader.c",
+        "file": "loader.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libsixel",
+        "tool": "img2sixel",
+        "type": "SEGV",
+        "severity": "High",
+        "description": "Segmentation fault in loader.c",
+        "file": "loader.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libsixel",
+        "tool": "img2sixel",
+        "type": "SEGV",
+        "severity": "High",
+        "description": "Segmentation fault in frompnm.c",
+        "file": "frompnm.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libsixel",
+        "tool": "sixel2png",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in fromsixel.c",
+        "file": "fromsixel.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libsixel",
+        "tool": "sixel2png",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in writer.c",
+        "file": "writer.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4dump",
+        "type": "Invalid Enum Load",
+        "severity": "High",
+        "description": "Invalid enum value load in Ap4MetaData.cpp",
+        "file": "Ap4MetaData.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4dump",
+        "type": "Invalid Enum Load",
+        "severity": "High",
+        "description": "Invalid enum value load in Ap4MetaData.cpp",
+        "file": "Ap4MetaData.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4dump",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Ap4DataBuffer.cpp",
+        "file": "Ap4DataBuffer.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4dump",
+        "type": "Memory Leak",
+        "severity": "High",
+        "description": "Memory leak in Mp4Dump.cpp",
+        "file": "Mp4Dump.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4tag",
+        "type": "Invalid Enum Load",
+        "severity": "High",
+        "description": "Invalid enum value load in Ap4MetaData.cpp",
+        "file": "Ap4MetaData.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4split",
+        "type": "Invalid Enum Load",
+        "severity": "High",
+        "description": "Invalid enum value load in Ap4MetaData.cpp",
+        "file": "Ap4MetaData.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4pssh",
+        "type": "Type Confusion",
+        "severity": "High",
+        "description": "Type confusion in Mp4Pssh.cpp",
+        "file": "Mp4Pssh.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4pssh",
+        "type": "Invalid Enum Load",
+        "severity": "High",
+        "description": "Invalid enum value load in Ap4MetaData.cpp",
+        "file": "Ap4MetaData.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4pssh",
+        "type": "Assertion Failure",
+        "severity": "High",
+        "description": "Assertion failure in Ap4Atom.cpp",
+        "file": "Ap4Atom.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4decrypt",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Ap4Processor.cpp",
+        "file": "Ap4Processor.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4decrypt",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Ap4Processor.cpp",
+        "file": "Ap4Processor.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4edit",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Ap4Processor.cpp",
+        "file": "Ap4Processor.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4encrypt",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Ap4CommonEncryption.cpp",
+        "file": "Ap4CommonEncryption.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4encrypt",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Ap4Array.h",
+        "file": "Ap4Array.h",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42aac",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in Ap4SampleEntry.cpp",
+        "file": "Ap4SampleEntry.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4info",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in Ap4Utils.cpp",
+        "file": "Ap4Utils.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42hls",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in Ap4Utils.cpp",
+        "file": "Ap4Utils.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42hls",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in Mp42Hls.cpp",
+        "file": "Mp42Hls.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4fragment",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in Mp4Fragment.cpp",
+        "file": "Mp4Fragment.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4mux",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in Ap4HevcParser.cpp",
+        "file": "Ap4HevcParser.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4mux",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in Ap4HevcParser.cpp",
+        "file": "Ap4HevcParser.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4mux",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in Ap4Utils.cpp",
+        "file": "Ap4Utils.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4mux",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in Ap4Utils.cpp",
+        "file": "Ap4Utils.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4mux",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in Ap4DataBuffer.cpp",
+        "file": "Ap4DataBuffer.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4mux",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Ap4HevcParser.cpp",
+        "file": "Ap4HevcParser.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp4mux",
+        "type": "Memory Leak",
+        "severity": "High",
+        "description": "Memory leak in Mp4Mux.cpp",
+        "file": "Mp4Mux.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42hevc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Mp42Hevc.cpp",
+        "file": "Mp42Hevc.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42hevc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Mp42Hevc.cpp",
+        "file": "Mp42Hevc.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42hevc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Mp42Hevc.cpp",
+        "file": "Mp42Hevc.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42hevc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Mp42Hevc.cpp",
+        "file": "Mp42Hevc.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42hevc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Mp42Hevc.cpp",
+        "file": "Mp42Hevc.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42hevc",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Ap4DataBuffer.cpp",
+        "file": "Ap4DataBuffer.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42hevc",
+        "type": "Memory Leak",
+        "severity": "High",
+        "description": "Memory leak in Mp42Hevc.cpp",
+        "file": "Mp42Hevc.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42ts",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Ap4Mpeg2Ts.cpp",
+        "file": "Ap4Mpeg2Ts.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42ts",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Ap4Mpeg2Ts.cpp",
+        "file": "Ap4Mpeg2Ts.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Bento4",
+        "tool": "mp42ts",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in Ap4Mpeg2Ts.cpp",
+        "file": "Ap4Mpeg2Ts.cpp",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "gpac",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in avilib.c",
+        "file": "avilib.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "gpac",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in load_text.c",
+        "file": "load_text.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "gpac",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in dmx_nhnt.c",
+        "file": "dmx_nhnt.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "gpac",
+        "type": "UAF",
+        "severity": "High",
+        "description": "Use-after-free in av_parsers.c",
+        "file": "av_parsers.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "gpac",
+        "type": "Division by Zero",
+        "severity": "High",
+        "description": "Division by zero in uncv_config",
+        "file": "uncv_config",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "MP4Box",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in loader_xmt.c",
+        "file": "loader_xmt.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "MP4Box",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in box_code_base.c",
+        "file": "box_code_base.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "MP4Box",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in dmx_nhml.c",
+        "file": "dmx_nhml.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "MP4Box",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in mp4box.c",
+        "file": "mp4box.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "MP4Box",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in mp4box.c",
+        "file": "mp4box.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "MP4Box",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in filter_props.c",
+        "file": "filter_props.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "MP4Box",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in dmx_nhml.c",
+        "file": "dmx_nhml.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "MP4Box",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in mux_isom.c",
+        "file": "mux_isom.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "GPAC",
+        "tool": "MP4Box",
+        "type": "Memory Leak",
+        "severity": "High",
+        "description": "Memory leak in avilib.c",
+        "file": "avilib.c",
+        "status": "Reported"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "Exiv2",
+        "tool": "exiv2",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in types.cpp",
+        "file": "types.cpp",
+        "status": "Confirmed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FLAC",
+        "tool": "flac",
+        "type": "Division by Zero",
+        "severity": "High",
+        "description": "Division by zero in encode.c",
+        "file": "encode.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FLAC",
+        "tool": "flac",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in analyze.c",
+        "file": "analyze.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "miniaudio",
+        "tool": "audioconverter",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in stb_vorbis.c",
+        "file": "stb_vorbis.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "miniaudio",
+        "tool": "audioconverter",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in stb_vorbis.c",
+        "file": "stb_vorbis.c",
+        "status": "Confirmed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "miniaudio",
+        "tool": "audioconverter",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in stb_vorbis.c",
+        "file": "stb_vorbis.c",
+        "status": "Confirmed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "miniaudio",
+        "tool": "audioconverter",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in stb_vorbis.c",
+        "file": "stb_vorbis.c",
+        "status": "Confirmed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "miniaudio",
+        "tool": "audioconverter",
+        "type": "Null Ptr Dereference",
+        "severity": "High",
+        "description": "Null pointer dereference in stb_vorbis.c",
+        "file": "stb_vorbis.c",
+        "status": "Confirmed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "FreeType",
+        "tool": "ftrandom",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in ttcolr.c",
+        "file": "ttcolr.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libtiff",
+        "tool": "tiffdump",
+        "type": "Misaligned Address",
+        "severity": "High",
+        "description": "Misaligned memory access in tiffdump.c",
+        "file": "tiffdump.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libtiff",
+        "tool": "tiffcp",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in tiffcp.c",
+        "file": "tiffcp.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libtiff",
+        "tool": "tiffsplit",
+        "type": "Buffer Overflow",
+        "severity": "High",
+        "description": "Buffer overflow in tiffsplit.c",
+        "file": "tiffsplit.c",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libheif",
+        "tool": "heif-enc",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in pixelimage.cc",
+        "file": "pixelimage.cc",
+        "status": "Fixed"
+    },
+    {
+        "id": "CVE-2026-XXXXX",
+        "project": "libpng",
+        "tool": "pngfix",
+        "type": "Integer Overflow",
+        "severity": "High",
+        "description": "Integer overflow in pngfix.c",
+        "file": "pngfix.c",
+        "status": "Reported"
     }
 ]

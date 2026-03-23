@@ -266,20 +266,20 @@
     <!-- Stats -->
     <div class="stats-bar">
         <div class="stat-card">
+            <span class="num" id="stat-fixed">0</span>
+            <span class="label">Fixed</span>
+        </div>
+        <div class="stat-card">
+            <span class="num" id="stat-confirmed-fixed">0</span>
+            <span class="label">Confirmed / Fixed</span>
+        </div>
+        <div class="stat-card">
+            <span class="num" id="stat-reported">0</span>
+            <span class="label">Reported</span>
+        </div>
+        <div class="stat-card">
             <span class="num" id="stat-total">0</span>
             <span class="label">Total Found</span>
-        </div>
-        <div class="stat-card">
-            <span class="num" id="stat-cve">0</span>
-            <span class="label">CVEs Assigned</span>
-        </div>
-        <div class="stat-card">
-            <span class="num" id="stat-confirmed">0</span>
-            <span class="label">Confirmed</span>
-        </div>
-        <div class="stat-card">
-            <span class="num" id="stat-projects">0</span>
-            <span class="label">Projects</span>
         </div>
     </div>
 
@@ -288,11 +288,10 @@
         <table id="vuln-table" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Project</th>
+                    <th>Tool</th>
                     <th>Type</th>
                     <th>Severity</th>
-                    <th>Description</th>
                     <th>Affected File</th>
                     <th>Status</th>
                 </tr>
@@ -330,15 +329,14 @@ function statusHtml(status) {
     return '<span class="' + cls + '">' + status + '</span>';
 }
 
-$.getJSON('vulnerabilities.json', function (data) {
+$.getJSON('vulnerabilities.json?v=' + Date.now(), function (data) {
     // Build rows
     var rows = data.map(function (v) {
         return [
-            v.id,
             v.project,
+            '<code>' + v.tool + '</code>',
             v.type,
             severityHtml(v.severity),
-            v.description,
             '<code>' + v.file + '</code>',
             statusHtml(v.status)
         ];
@@ -348,7 +346,7 @@ $.getJSON('vulnerabilities.json', function (data) {
     var table = $('#vuln-table').DataTable({
         data: rows,
         pageLength: 25,
-        order: [[3, 'asc']],
+        order: [[5, 'asc']],
         dom: '<"row mb-3"<"col-sm-6"l><"col-sm-6"f>>' +
              '<"row mb-2"<"col-sm-12"B>>' +
              '<"row"<"col-sm-12"tr>>' +
@@ -373,7 +371,6 @@ $.getJSON('vulnerabilities.json', function (data) {
             }
         ],
         columnDefs: [
-            { targets: [4], orderable: false },
             {
                 targets: 3,
                 type: 'string',
@@ -389,13 +386,13 @@ $.getJSON('vulnerabilities.json', function (data) {
                 }
             },
             {
-                targets: 6,
+                targets: 5,
                 type: 'string',
                 render: function (d, type) {
                     if (type === 'sort') {
-                        if (d.indexOf('Confirmed') > -1) return '0';
-                        if (d.indexOf('Reported') > -1) return '1';
-                        if (d.indexOf('Fixed') > -1) return '2';
+                        if (d.indexOf('Fixed') > -1) return '0';
+                        if (d.indexOf('Confirmed') > -1) return '1';
+                        if (d.indexOf('Reported') > -1) return '2';
                         return '3';
                     }
                     return d;
@@ -411,17 +408,16 @@ $.getJSON('vulnerabilities.json', function (data) {
     });
 
     // Update stats
-    var cveCount = 0, confirmedCount = 0;
-    var projects = new Set();
+    var fixedCount = 0, confirmedFixedCount = 0, reportedCount = 0;
     data.forEach(function (v) {
-        if (v.id && v.id.indexOf('XXXXX') === -1) cveCount++;
-        if (v.status === 'Confirmed' || v.status === 'Fixed') confirmedCount++;
-        if (v.project) projects.add(v.project);
+        if (v.status === 'Fixed') { fixedCount++; confirmedFixedCount++; }
+        else if (v.status === 'Confirmed') confirmedFixedCount++;
+        else if (v.status === 'Reported') reportedCount++;
     });
+    $('#stat-fixed').text(fixedCount);
+    $('#stat-confirmed-fixed').text(confirmedFixedCount);
+    $('#stat-reported').text(reportedCount);
     $('#stat-total').text(data.length);
-    $('#stat-cve').text(cveCount);
-    $('#stat-confirmed').text(confirmedCount);
-    $('#stat-projects').text(projects.size);
 });
 </script>
 
