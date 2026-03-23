@@ -1034,99 +1034,85 @@
             At the time of writing, 39 have been confirmed and 33 fixed by developers.
         </p>
 
-        <p class="table-caption">Summary of Discovered 0-day Vulnerabilities</p>
+        <p class="table-caption">Summary of Discovered Vulnerabilities</p>
         <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
                         <th>Project</th>
-                        <th>Tools Tested</th>
+                        <th>Tool</th>
+                        <th>Vulnerability Type</th>
                         <th style="text-align:right">RamFuzz</th>
                         <th style="text-align:right">G&sup2;Fuzz</th>
                         <th style="text-align:right">FormatFuzzer</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Bento4</td>
-                        <td>14 tools</td>
-                        <td style="text-align:right" class="best">34</td>
-                        <td style="text-align:right">10</td>
-                        <td style="text-align:right">9</td>
-                    </tr>
-                    <tr>
-                        <td>FlatBuffers</td>
-                        <td>flatc</td>
-                        <td style="text-align:right" class="best">32</td>
-                        <td style="text-align:right">5</td>
-                        <td style="text-align:right">&ndash;</td>
-                    </tr>
-                    <tr>
-                        <td>GPAC</td>
-                        <td>gpac, MP4Box</td>
-                        <td style="text-align:right" class="best">13</td>
-                        <td style="text-align:right">3</td>
-                        <td style="text-align:right">1</td>
-                    </tr>
-                    <tr>
-                        <td>libsixel</td>
-                        <td>img2sixel, sixel2png</td>
-                        <td style="text-align:right" class="best">11</td>
-                        <td style="text-align:right">0</td>
-                        <td style="text-align:right">0</td>
-                    </tr>
-                    <tr>
-                        <td>miniaudio</td>
-                        <td>audioconverter</td>
-                        <td style="text-align:right" class="best">5</td>
-                        <td style="text-align:right">1</td>
-                        <td style="text-align:right">0</td>
-                    </tr>
-                    <tr>
-                        <td>libtiff</td>
-                        <td>3 tools</td>
-                        <td style="text-align:right" class="best">3</td>
-                        <td style="text-align:right">0</td>
-                        <td style="text-align:right">&ndash;</td>
-                    </tr>
-                    <tr>
-                        <td>FLAC</td>
-                        <td>flac</td>
-                        <td style="text-align:right" class="best">2</td>
-                        <td style="text-align:right">0</td>
-                        <td style="text-align:right">&ndash;</td>
-                    </tr>
-                    <tr>
-                        <td>Exiv2</td>
-                        <td>exiv2</td>
-                        <td style="text-align:right" class="best">1</td>
-                        <td style="text-align:right">0</td>
-                        <td style="text-align:right">&ndash;</td>
-                    </tr>
-                    <tr>
-                        <td>FreeType</td>
-                        <td>ftrandom</td>
-                        <td style="text-align:right">1</td>
-                        <td style="text-align:right">1</td>
-                        <td style="text-align:right">&ndash;</td>
-                    </tr>
-                    <tr>
-                        <td>libheif</td>
-                        <td>heif-enc</td>
-                        <td style="text-align:right" class="best">1</td>
-                        <td style="text-align:right">0</td>
-                        <td style="text-align:right">&ndash;</td>
-                    </tr>
-                    <tr>
-                        <td>libpng</td>
-                        <td>pngfix</td>
-                        <td style="text-align:right">1</td>
-                        <td style="text-align:right">1</td>
-                        <td style="text-align:right">0</td>
-                    </tr>
-                    <tr style="border-top:2px solid var(--border);font-weight:600">
-                        <td><strong>Total</strong></td>
-                        <td></td>
+                    <!-- FlatBuffers -->
+                    <tr><td rowspan="8" style="vertical-align:top;font-weight:600">FlatBuffers</td><td rowspan="8" style="vertical-align:top">flatc</td><td>Buffer Overflow</td><td style="text-align:right">12</td><td style="text-align:right">3</td><td style="text-align:right">&ndash;</td></tr>
+                    <tr><td>Null Ptr Dereference</td><td style="text-align:right">7</td><td style="text-align:right">0</td><td style="text-align:right">&ndash;</td></tr>
+                    <tr><td>Assertion Failure</td><td style="text-align:right">5</td><td style="text-align:right">1</td><td style="text-align:right">&ndash;</td></tr>
+                    <tr><td>Integer Overflow</td><td style="text-align:right">3</td><td style="text-align:right">0</td><td style="text-align:right">&ndash;</td></tr>
+                    <tr><td>Type Confusion</td><td style="text-align:right">3</td><td style="text-align:right">0</td><td style="text-align:right">&ndash;</td></tr>
+                    <tr><td>Division by Zero</td><td style="text-align:right">1<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">&ndash;</td></tr>
+                    <tr><td>Stack Overflow</td><td style="text-align:right">1<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">&ndash;</td></tr>
+                    <tr><td>UAF</td><td style="text-align:right">0</td><td style="text-align:right">1</td><td style="text-align:right">&ndash;</td></tr>
+                    <!-- libsixel -->
+                    <tr style="border-top:2px solid var(--border)"><td rowspan="4" style="vertical-align:top;font-weight:600">libsixel</td><td rowspan="3" style="vertical-align:top">img2sixel</td><td>Buffer Overflow</td><td style="text-align:right">2<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>Integer Overflow</td><td style="text-align:right">5<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>SEGV</td><td style="text-align:right">2<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>sixel2png</td><td>Integer Overflow</td><td style="text-align:right">2<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">&ndash;</td></tr>
+                    <!-- Bento4 -->
+                    <tr style="border-top:2px solid var(--border)"><td rowspan="22" style="vertical-align:top;font-weight:600">Bento4</td><td rowspan="3" style="vertical-align:top">mp4dump</td><td>Invalid Enum Load</td><td style="text-align:right">2</td><td style="text-align:right">1</td><td style="text-align:right">1</td></tr>
+                    <tr><td>Null Ptr Dereference</td><td style="text-align:right">1</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>Memory Leak</td><td style="text-align:right">0</td><td style="text-align:right">0</td><td style="text-align:right">1</td></tr>
+                    <tr><td>mp4tag</td><td>Invalid Enum Load</td><td style="text-align:right">1</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>mp4split</td><td>Invalid Enum Load</td><td style="text-align:right">1</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td rowspan="3" style="vertical-align:top">mp4pssh</td><td>Type Confusion</td><td style="text-align:right">1</td><td style="text-align:right">0</td><td style="text-align:right">1</td></tr>
+                    <tr><td>Invalid Enum Load</td><td style="text-align:right">1</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>Assertion Failure</td><td style="text-align:right">1</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>mp4decrypt</td><td>Null Ptr Dereference</td><td style="text-align:right">2</td><td style="text-align:right">1</td><td style="text-align:right">1</td></tr>
+                    <tr><td>mp4edit</td><td>Null Ptr Dereference</td><td style="text-align:right">1</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>mp4encrypt</td><td>Null Ptr Dereference</td><td style="text-align:right">2</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>mp42aac</td><td>Integer Overflow</td><td style="text-align:right">1</td><td style="text-align:right">1</td><td style="text-align:right">1</td></tr>
+                    <tr><td>mp4info</td><td>Integer Overflow</td><td style="text-align:right">1</td><td style="text-align:right">1</td><td style="text-align:right">1</td></tr>
+                    <tr><td>mp42hls</td><td>Integer Overflow</td><td style="text-align:right">2</td><td style="text-align:right">1</td><td style="text-align:right">0</td></tr>
+                    <tr><td>mp4fragment</td><td>Integer Overflow</td><td style="text-align:right">1</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td rowspan="4" style="vertical-align:top">mp4mux</td><td>Integer Overflow</td><td style="text-align:right">3</td><td style="text-align:right">1</td><td style="text-align:right">1</td></tr>
+                    <tr><td>Buffer Overflow</td><td style="text-align:right">2</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>Null Ptr Dereference</td><td style="text-align:right">1</td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>Memory Leak</td><td style="text-align:right">0</td><td style="text-align:right">0</td><td style="text-align:right">1</td></tr>
+                    <tr><td rowspan="2" style="vertical-align:top">mp42hevc</td><td>Null Ptr Dereference</td><td style="text-align:right">6</td><td style="text-align:right">1</td><td style="text-align:right">1</td></tr>
+                    <tr><td>Memory Leak</td><td style="text-align:right">1</td><td style="text-align:right">2</td><td style="text-align:right">0</td></tr>
+                    <tr><td>mp42ts</td><td>Null Ptr Dereference</td><td style="text-align:right">3</td><td style="text-align:right">1</td><td style="text-align:right">0</td></tr>
+                    <!-- GPAC -->
+                    <tr style="border-top:2px solid var(--border)"><td rowspan="6" style="vertical-align:top;font-weight:600">GPAC</td><td rowspan="3" style="vertical-align:top">gpac</td><td>Buffer Overflow</td><td style="text-align:right">3<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>UAF</td><td style="text-align:right">1<sup>*</sup></td><td style="text-align:right">1</td><td style="text-align:right">0</td></tr>
+                    <tr><td>Division by Zero</td><td style="text-align:right">1<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td rowspan="3" style="vertical-align:top">MP4Box</td><td>Buffer Overflow</td><td style="text-align:right">5<sup>*</sup></td><td style="text-align:right">1</td><td style="text-align:right">1</td></tr>
+                    <tr><td>Null Ptr Dereference</td><td style="text-align:right">3<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <tr><td>Memory Leak</td><td style="text-align:right">0</td><td style="text-align:right">1</td><td style="text-align:right">0</td></tr>
+                    <!-- Exiv2 -->
+                    <tr style="border-top:2px solid var(--border)"><td style="font-weight:600">Exiv2</td><td>exiv2</td><td>Integer Overflow</td><td style="text-align:right">1<sup>&dagger;</sup></td><td style="text-align:right">0</td><td style="text-align:right">&ndash;</td></tr>
+                    <!-- FLAC -->
+                    <tr style="border-top:2px solid var(--border)"><td rowspan="2" style="vertical-align:top;font-weight:600">FLAC</td><td rowspan="2" style="vertical-align:top">flac</td><td>Division by Zero</td><td style="text-align:right">1<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">&ndash;</td></tr>
+                    <tr><td>Buffer Overflow</td><td style="text-align:right">1<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">&ndash;</td></tr>
+                    <!-- miniaudio -->
+                    <tr style="border-top:2px solid var(--border)"><td rowspan="2" style="vertical-align:top;font-weight:600">miniaudio</td><td rowspan="2" style="vertical-align:top">audioconverter</td><td>Integer Overflow</td><td style="text-align:right">4<sup>&dagger;</sup></td><td style="text-align:right">1</td><td style="text-align:right">0</td></tr>
+                    <tr><td>Null Ptr Dereference</td><td style="text-align:right">1<sup>&dagger;</sup></td><td style="text-align:right">0</td><td style="text-align:right">0</td></tr>
+                    <!-- FreeType -->
+                    <tr style="border-top:2px solid var(--border)"><td style="font-weight:600">FreeType</td><td>ftrandom</td><td>Buffer Overflow</td><td style="text-align:right">1<sup>*</sup></td><td style="text-align:right">1</td><td style="text-align:right">&ndash;</td></tr>
+                    <!-- libtiff -->
+                    <tr style="border-top:2px solid var(--border)"><td rowspan="3" style="vertical-align:top;font-weight:600">libtiff</td><td>tiffdump</td><td>Misaligned Address</td><td style="text-align:right">1<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">&ndash;</td></tr>
+                    <tr><td>tiffcp</td><td>Buffer Overflow</td><td style="text-align:right">1<sup>*</sup></td><td style="text-align:right">&ndash;</td><td style="text-align:right">&ndash;</td></tr>
+                    <tr><td>tiffsplit</td><td>Buffer Overflow</td><td style="text-align:right">1<sup>*</sup></td><td style="text-align:right">&ndash;</td><td style="text-align:right">&ndash;</td></tr>
+                    <!-- libheif -->
+                    <tr style="border-top:2px solid var(--border)"><td style="font-weight:600">libheif</td><td>heif-enc</td><td>Integer Overflow</td><td style="text-align:right">1<sup>*</sup></td><td style="text-align:right">0</td><td style="text-align:right">&ndash;</td></tr>
+                    <!-- libpng -->
+                    <tr style="border-top:2px solid var(--border)"><td style="font-weight:600">libpng</td><td>pngfix</td><td>Integer Overflow</td><td style="text-align:right">1</td><td style="text-align:right">1</td><td style="text-align:right">0</td></tr>
+                    <!-- Total -->
+                    <tr style="border-top:3px solid var(--text);font-weight:700">
+                        <td colspan="3"><strong>Total</strong></td>
                         <td style="text-align:right" class="best">104</td>
                         <td style="text-align:right">21</td>
                         <td style="text-align:right">10</td>
@@ -1135,8 +1121,9 @@
             </table>
         </div>
         <p class="table-note">
-            &ndash; indicates the tool does not support the required input format.
-            See <a href="vulnerabilities.html">full vulnerability list</a> for per-tool breakdown by type.
+            <sup>*</sup> Confirmed and fixed by developers.
+            <sup>&dagger;</sup> Confirmed by developers.
+            &ndash; Format not supported.
         </p>
     </section>
 
