@@ -937,7 +937,7 @@
     "severity": "High",
     "description": "Integer overflow in stb_vorbis.c",
     "file": "stb_vorbis.c",
-    "status": "Fixed"
+    "status": "Confirmed"
   },
   {
     "id": "CVE-2026-XXXXX",
