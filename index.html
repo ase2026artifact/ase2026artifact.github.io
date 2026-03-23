@@ -264,6 +264,15 @@
             background: #dcfce7;
             color: #166534;
         }
+        .status-fixed {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #dbeafe;
+            color: #1e40af;
+        }
 
         /* ── Code block ── */
         code {
@@ -371,6 +380,81 @@
             text-decoration: none;
         }
 
+        /* ── Results section ── */
+        .results-summary {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0 1.5rem;
+        }
+        .results-stat {
+            text-align: center;
+            flex: 1;
+            min-width: 110px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem 0.5rem;
+        }
+        .results-stat .num {
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        .results-stat .label {
+            font-size: 0.72rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .rq-label {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 0.1rem 0.45rem;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-right: 0.25rem;
+            vertical-align: middle;
+            letter-spacing: 0.03em;
+        }
+        .results-section table {
+            font-size: 0.82rem;
+        }
+        .results-section th,
+        .results-section td {
+            padding: 0.45rem 0.55rem;
+            white-space: nowrap;
+        }
+        .results-section th {
+            font-size: 0.7rem;
+        }
+        .best {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .table-caption {
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.2rem;
+            color: var(--text);
+        }
+        .table-note {
+            font-size: 0.76rem;
+            color: var(--text-light);
+            margin-top: 0.35rem;
+            line-height: 1.5;
+        }
+        .results-section .table-wrapper {
+            margin-top: 0.5rem;
+        }
+        .col-sep {
+            border-left: 2px solid var(--border) !important;
+        }
+
         /* ── Footer ── */
         footer {
             text-align: center;
@@ -427,7 +511,7 @@
                 <h3>Source Code</h3>
                 <p>Full tool implementation with build instructions and dependencies.</p>
             </a>
-            <a class="card" href="#">
+            <a class="card" href="https://zenodo.org/records/19174737">
                 <div class="card-icon">&#128230;</div>
                 <h3>Archive</h3>
                 <p>Archived version of the complete artifact package.</p>
@@ -470,20 +554,20 @@
             </p>
             <div class="vuln-stats">
                 <div class="vuln-stat">
+                    <span class="num" id="stat-fixed">-</span>
+                    <span class="label">Fixed</span>
+                </div>
+                <div class="vuln-stat">
+                    <span class="num" id="stat-confirmed-fixed">-</span>
+                    <span class="label">Confirmed / Fixed</span>
+                </div>
+                <div class="vuln-stat">
+                    <span class="num" id="stat-reported">-</span>
+                    <span class="label">Reported</span>
+                </div>
+                <div class="vuln-stat">
                     <span class="num" id="stat-total">-</span>
                     <span class="label">Total Found</span>
-                </div>
-                <div class="vuln-stat">
-                    <span class="num" id="stat-cve">-</span>
-                    <span class="label">CVEs Assigned</span>
-                </div>
-                <div class="vuln-stat">
-                    <span class="num" id="stat-confirmed">-</span>
-                    <span class="label">Confirmed</span>
-                </div>
-                <div class="vuln-stat">
-                    <span class="num" id="stat-projects">-</span>
-                    <span class="label">Projects Affected</span>
                 </div>
             </div>
 
@@ -492,17 +576,16 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Project</th>
+                                <th>Tool</th>
                                 <th>Type</th>
                                 <th>Severity</th>
-                                <th>Description</th>
                                 <th>Affected File</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody id="vuln-preview-body">
-                            <tr><td colspan="7" style="text-align:center;">Loading...</td></tr>
+                            <tr><td colspan="6" style="text-align:center;">Loading...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -512,31 +595,549 @@
     </section>
 
     <!-- Results -->
-    <section id="results">
+    <section id="results" class="results-section">
         <h2>Results</h2>
         <p>
-            Detailed experiment results, including coverage metrics, bug detection
-            rates, and comparison with baselines. Full data and reproduction scripts
-            are available in the <a href="#">experiment data</a> artifact.
+            We evaluate RamFuzz on the
+            UNIFUZZ benchmark
+            (15 programs, 13 formats) and 15 real-world GitHub projects.
+            Each fuzzing experiment runs for 24 hours, repeated 5 times.
+            Full data and reproduction scripts are available in the
+            <a href="#">experiment data</a> artifact.
+        </p>
+
+        <div class="results-summary">
+            <div class="results-stat">
+                <span class="num">104</span>
+                <span class="label">0-day Bugs Found</span>
+            </div>
+            <div class="results-stat">
+                <span class="num">11 / 15</span>
+                <span class="label">Best Bug Detection</span>
+            </div>
+            <div class="results-stat">
+                <span class="num">10 / 15</span>
+                <span class="label">Best Coverage</span>
+            </div>
+            <div class="results-stat">
+                <span class="num">10.8%</span>
+                <span class="label">Avg. Overhead</span>
+            </div>
+        </div>
+
+        <!-- ── Pilot Study ── -->
+        <h3><span class="rq-label">Pilot Study</span> CVE Classification (132 CVEs)</h3>
+        <p>
+            We analyzed 132 reproduced spatial memory corruption CVEs (2016&ndash;2026) from NIST NVD.
+            <strong>72.7%</strong> stem from valid range violations&mdash;the core mechanism RamFuzz targets.
         </p>
         <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
-                        <th>Metric</th>
-                        <th>RamFuzz</th>
-                        <th>Baseline</th>
+                        <th>Class</th>
+                        <th>Consequence</th>
+                        <th>Example CVE</th>
+                        <th style="text-align:right">Count</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>TBD</td>
-                        <td>TBD</td>
-                        <td>TBD</td>
+                        <td rowspan="5" style="font-weight:600;vertical-align:top">Violate (72.7%)</td>
+                        <td>Upper-bound violation</td>
+                        <td><code>CVE-2021-46848</code></td>
+                        <td style="text-align:right"><strong>42</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Integer underflow</td>
+                        <td><code>CVE-2017-14644</code></td>
+                        <td style="text-align:right">19</td>
+                    </tr>
+                    <tr>
+                        <td>Lower-bound violation</td>
+                        <td><code>CVE-2022-34299</code></td>
+                        <td style="text-align:right">15</td>
+                    </tr>
+                    <tr>
+                        <td>Integer overflow</td>
+                        <td><code>CVE-2017-14643</code></td>
+                        <td style="text-align:right">13</td>
+                    </tr>
+                    <tr>
+                        <td>Unexpected value</td>
+                        <td><code>CVE-2022-46456</code></td>
+                        <td style="text-align:right">7</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" style="font-weight:600;vertical-align:top">Not Violate (27.3%)</td>
+                        <td>Structure inconsistency</td>
+                        <td><code>CVE-2021-3575</code></td>
+                        <td style="text-align:right">22</td>
+                    </tr>
+                    <tr>
+                        <td>Logic error</td>
+                        <td><code>CVE-2020-23707</code></td>
+                        <td style="text-align:right">9</td>
+                    </tr>
+                    <tr>
+                        <td>Specific path taken</td>
+                        <td><code>CVE-2017-6852</code></td>
+                        <td style="text-align:right">5</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+        <!-- ── RQ1: Detection Effectiveness ── -->
+        <h3><span class="rq-label">RQ1</span> Detection Effectiveness (UNIFUZZ Benchmark)</h3>
+        <p>
+            RamFuzz found the most unique bugs in <strong>11 of 15</strong> programs and achieved
+            the highest edge coverage on <strong>10 of 15</strong>.
+            Bold values indicate the best result per program.
+        </p>
+
+        <p class="table-caption">Edge Coverage &amp; Unique Bugs on UNIFUZZ Programs</p>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Program</th>
+                        <th colspan="2" style="text-align:center" class="col-sep">RamFuzz</th>
+                        <th colspan="2" style="text-align:center" class="col-sep">G&sup2;Fuzz</th>
+                        <th colspan="2" style="text-align:center" class="col-sep">FormatFuzzer</th>
+                        <th colspan="2" style="text-align:center" class="col-sep">AFLSmart</th>
+                        <th colspan="2" style="text-align:center" class="col-sep">AFL++</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right" class="col-sep">Cov.</th>
+                        <th style="text-align:right">#Bug</th>
+                        <th style="text-align:right" class="col-sep">Cov.</th>
+                        <th style="text-align:right">#Bug</th>
+                        <th style="text-align:right" class="col-sep">Cov.</th>
+                        <th style="text-align:right">#Bug</th>
+                        <th style="text-align:right" class="col-sep">Cov.</th>
+                        <th style="text-align:right">#Bug</th>
+                        <th style="text-align:right" class="col-sep">Cov.</th>
+                        <th style="text-align:right">#Bug</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>exiv2</td>
+                        <td style="text-align:right" class="best col-sep">5,648</td>
+                        <td style="text-align:right" class="best">33</td>
+                        <td style="text-align:right" class="col-sep">5,412</td>
+                        <td style="text-align:right">28</td>
+                        <td style="text-align:right" class="col-sep">5,512</td>
+                        <td style="text-align:right">30</td>
+                        <td style="text-align:right" class="col-sep">4,102</td>
+                        <td style="text-align:right">14</td>
+                        <td style="text-align:right" class="col-sep">4,965</td>
+                        <td style="text-align:right">18</td>
+                    </tr>
+                    <tr>
+                        <td>ffmpeg</td>
+                        <td style="text-align:right" class="best col-sep">38,215</td>
+                        <td style="text-align:right" class="best">2</td>
+                        <td style="text-align:right" class="col-sep">36,823</td>
+                        <td style="text-align:right">1</td>
+                        <td style="text-align:right" class="col-sep">24,318</td>
+                        <td style="text-align:right">1</td>
+                        <td style="text-align:right" class="col-sep">19,563</td>
+                        <td style="text-align:right">0</td>
+                        <td style="text-align:right" class="col-sep">22,099</td>
+                        <td style="text-align:right">0</td>
+                    </tr>
+                    <tr>
+                        <td>flvmeta</td>
+                        <td style="text-align:right col-sep">216</td>
+                        <td style="text-align:right">4</td>
+                        <td style="text-align:right" class="best col-sep">228</td>
+                        <td style="text-align:right">4</td>
+                        <td style="text-align:right" class="col-sep">&ndash;</td>
+                        <td style="text-align:right">&ndash;</td>
+                        <td style="text-align:right" class="col-sep">&ndash;</td>
+                        <td style="text-align:right">&ndash;</td>
+                        <td style="text-align:right" class="col-sep">216</td>
+                        <td style="text-align:right">4</td>
+                    </tr>
+                    <tr>
+                        <td>gdk</td>
+                        <td style="text-align:right" class="best col-sep">3,218</td>
+                        <td style="text-align:right" class="best">11</td>
+                        <td style="text-align:right" class="col-sep">3,148</td>
+                        <td style="text-align:right">6</td>
+                        <td style="text-align:right" class="col-sep">2,812</td>
+                        <td style="text-align:right">6</td>
+                        <td style="text-align:right" class="col-sep">2,312</td>
+                        <td style="text-align:right">3</td>
+                        <td style="text-align:right" class="col-sep">2,172</td>
+                        <td style="text-align:right">3</td>
+                    </tr>
+                    <tr>
+                        <td>imginfo</td>
+                        <td style="text-align:right col-sep">3,187</td>
+                        <td style="text-align:right" class="best">2</td>
+                        <td style="text-align:right" class="best col-sep">3,325</td>
+                        <td style="text-align:right">1</td>
+                        <td style="text-align:right" class="col-sep">2,415</td>
+                        <td style="text-align:right">0</td>
+                        <td style="text-align:right" class="col-sep">2,287</td>
+                        <td style="text-align:right">0</td>
+                        <td style="text-align:right" class="col-sep">2,189</td>
+                        <td style="text-align:right">0</td>
+                    </tr>
+                    <tr>
+                        <td>jhead</td>
+                        <td style="text-align:right" class="best col-sep">528</td>
+                        <td style="text-align:right" class="best">26</td>
+                        <td style="text-align:right" class="col-sep">508</td>
+                        <td style="text-align:right">22</td>
+                        <td style="text-align:right" class="col-sep">478</td>
+                        <td style="text-align:right">23</td>
+                        <td style="text-align:right" class="col-sep">387</td>
+                        <td style="text-align:right">17</td>
+                        <td style="text-align:right" class="col-sep">445</td>
+                        <td style="text-align:right">14</td>
+                    </tr>
+                    <tr>
+                        <td>mp3gain</td>
+                        <td style="text-align:right col-sep">1,037</td>
+                        <td style="text-align:right">10</td>
+                        <td style="text-align:right" class="best col-sep">1,291</td>
+                        <td style="text-align:right" class="best">14</td>
+                        <td style="text-align:right" class="col-sep">1,043</td>
+                        <td style="text-align:right">9</td>
+                        <td style="text-align:right" class="col-sep">1,014</td>
+                        <td style="text-align:right">10</td>
+                        <td style="text-align:right" class="col-sep">1,021</td>
+                        <td style="text-align:right">8</td>
+                    </tr>
+                    <tr>
+                        <td>mp42aac</td>
+                        <td style="text-align:right" class="best col-sep">3,012</td>
+                        <td style="text-align:right" class="best">70</td>
+                        <td style="text-align:right" class="col-sep">2,918</td>
+                        <td style="text-align:right">42</td>
+                        <td style="text-align:right" class="col-sep">2,756</td>
+                        <td style="text-align:right">28</td>
+                        <td style="text-align:right" class="col-sep">1,246</td>
+                        <td style="text-align:right">23</td>
+                        <td style="text-align:right" class="col-sep">2,091</td>
+                        <td style="text-align:right">18</td>
+                    </tr>
+                    <tr>
+                        <td>pdftotext</td>
+                        <td style="text-align:right col-sep">8,503</td>
+                        <td style="text-align:right" class="best">69</td>
+                        <td style="text-align:right" class="best col-sep">8,614</td>
+                        <td style="text-align:right">52</td>
+                        <td style="text-align:right" class="col-sep">&ndash;</td>
+                        <td style="text-align:right">&ndash;</td>
+                        <td style="text-align:right" class="col-sep">7,612</td>
+                        <td style="text-align:right">18</td>
+                        <td style="text-align:right" class="col-sep">7,434</td>
+                        <td style="text-align:right">16</td>
+                    </tr>
+                    <tr>
+                        <td>tiffsplit</td>
+                        <td style="text-align:right" class="best col-sep">2,217</td>
+                        <td style="text-align:right" class="best">24</td>
+                        <td style="text-align:right" class="col-sep">1,952</td>
+                        <td style="text-align:right">10</td>
+                        <td style="text-align:right" class="col-sep">&ndash;</td>
+                        <td style="text-align:right">&ndash;</td>
+                        <td style="text-align:right" class="col-sep">&ndash;</td>
+                        <td style="text-align:right">&ndash;</td>
+                        <td style="text-align:right" class="col-sep">1,659</td>
+                        <td style="text-align:right">4</td>
+                    </tr>
+                    <tr>
+                        <td>tcpdump</td>
+                        <td style="text-align:right" class="best col-sep">6,187</td>
+                        <td style="text-align:right" class="best">8</td>
+                        <td style="text-align:right" class="col-sep">&ndash;</td>
+                        <td style="text-align:right">&ndash;</td>
+                        <td style="text-align:right" class="col-sep">5,812</td>
+                        <td style="text-align:right">5</td>
+                        <td style="text-align:right" class="col-sep">5,478</td>
+                        <td style="text-align:right">3</td>
+                        <td style="text-align:right" class="col-sep">5,632</td>
+                        <td style="text-align:right">3</td>
+                    </tr>
+                    <tr>
+                        <td>wav2swf</td>
+                        <td style="text-align:right" class="best col-sep">5,712</td>
+                        <td style="text-align:right">15</td>
+                        <td style="text-align:right" class="col-sep">&ndash;</td>
+                        <td style="text-align:right">&ndash;</td>
+                        <td style="text-align:right" class="col-sep">5,187</td>
+                        <td style="text-align:right">15</td>
+                        <td style="text-align:right" class="col-sep">4,538</td>
+                        <td style="text-align:right">11</td>
+                        <td style="text-align:right" class="col-sep">4,489</td>
+                        <td style="text-align:right">12</td>
+                    </tr>
+                    <tr>
+                        <td>lame</td>
+                        <td style="text-align:right col-sep">3,478</td>
+                        <td style="text-align:right">4</td>
+                        <td style="text-align:right" class="col-sep">&ndash;</td>
+                        <td style="text-align:right">&ndash;</td>
+                        <td style="text-align:right" class="best col-sep">3,624</td>
+                        <td style="text-align:right" class="best">5</td>
+                        <td style="text-align:right" class="col-sep">3,218</td>
+                        <td style="text-align:right">2</td>
+                        <td style="text-align:right" class="col-sep">3,102</td>
+                        <td style="text-align:right">1</td>
+                    </tr>
+                    <tr>
+                        <td>nm</td>
+                        <td style="text-align:right" class="best col-sep">4,253</td>
+                        <td style="text-align:right" class="best">11</td>
+                        <td style="text-align:right" class="col-sep">&ndash;</td>
+                        <td style="text-align:right">&ndash;</td>
+                        <td style="text-align:right" class="col-sep">4,012</td>
+                        <td style="text-align:right">5</td>
+                        <td style="text-align:right" class="col-sep">3,612</td>
+                        <td style="text-align:right">2</td>
+                        <td style="text-align:right" class="col-sep">3,845</td>
+                        <td style="text-align:right">2</td>
+                    </tr>
+                    <tr>
+                        <td>objdump</td>
+                        <td style="text-align:right" class="best col-sep">7,618</td>
+                        <td style="text-align:right" class="best">10</td>
+                        <td style="text-align:right" class="col-sep">&ndash;</td>
+                        <td style="text-align:right">&ndash;</td>
+                        <td style="text-align:right" class="col-sep">7,314</td>
+                        <td style="text-align:right">9</td>
+                        <td style="text-align:right" class="col-sep">6,534</td>
+                        <td style="text-align:right">2</td>
+                        <td style="text-align:right" class="col-sep">6,892</td>
+                        <td style="text-align:right">3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-note">
+            &ndash; indicates the tool does not support the required input format.
+            Bold = best result per program.
+        </p>
+
+        <p class="table-caption">Ablation Study</p>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Program</th>
+                        <th colspan="2" style="text-align:center" class="col-sep">RamFuzz</th>
+                        <th colspan="2" style="text-align:center" class="col-sep">RamFuzz(-B)</th>
+                        <th colspan="2" style="text-align:center" class="col-sep">RamFuzz(-S)</th>
+                        <th colspan="2" style="text-align:center" class="col-sep">RamFuzz(GPT-4)</th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right" class="col-sep">Cov.</th>
+                        <th style="text-align:right">#Bug</th>
+                        <th style="text-align:right" class="col-sep">Cov.</th>
+                        <th style="text-align:right">#Bug</th>
+                        <th style="text-align:right" class="col-sep">Cov.</th>
+                        <th style="text-align:right">#Bug</th>
+                        <th style="text-align:right" class="col-sep">Cov.</th>
+                        <th style="text-align:right">#Bug</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>exiv2</td><td style="text-align:right" class="col-sep">5,648</td><td style="text-align:right">33</td><td style="text-align:right" class="col-sep">5,203</td><td style="text-align:right">31</td><td style="text-align:right" class="col-sep">5,387</td><td style="text-align:right">28</td><td style="text-align:right" class="col-sep">5,421</td><td style="text-align:right">31</td></tr>
+                    <tr><td>ffmpeg</td><td style="text-align:right" class="col-sep">38,215</td><td style="text-align:right">2</td><td style="text-align:right" class="col-sep">28,340</td><td style="text-align:right">2</td><td style="text-align:right" class="col-sep">35,891</td><td style="text-align:right">1</td><td style="text-align:right" class="col-sep">36,107</td><td style="text-align:right">2</td></tr>
+                    <tr><td>flvmeta</td><td style="text-align:right" class="col-sep">216</td><td style="text-align:right">4</td><td style="text-align:right" class="col-sep">&ndash;</td><td style="text-align:right">&ndash;</td><td style="text-align:right" class="col-sep">221</td><td style="text-align:right">4</td><td style="text-align:right" class="col-sep">199</td><td style="text-align:right">4</td></tr>
+                    <tr><td>gdk</td><td style="text-align:right" class="col-sep">3,218</td><td style="text-align:right">11</td><td style="text-align:right" class="col-sep">2,876</td><td style="text-align:right">7</td><td style="text-align:right" class="col-sep">3,047</td><td style="text-align:right">5</td><td style="text-align:right" class="col-sep">3,095</td><td style="text-align:right">7</td></tr>
+                    <tr><td>imginfo</td><td style="text-align:right" class="col-sep">3,187</td><td style="text-align:right">2</td><td style="text-align:right" class="col-sep">3,006</td><td style="text-align:right">0</td><td style="text-align:right" class="col-sep">3,152</td><td style="text-align:right">1</td><td style="text-align:right" class="col-sep">3,013</td><td style="text-align:right">1</td></tr>
+                    <tr><td>jhead</td><td style="text-align:right" class="col-sep">528</td><td style="text-align:right">26</td><td style="text-align:right" class="col-sep">503</td><td style="text-align:right">24</td><td style="text-align:right" class="col-sep">472</td><td style="text-align:right">20</td><td style="text-align:right" class="col-sep">511</td><td style="text-align:right">23</td></tr>
+                    <tr><td>mp3gain</td><td style="text-align:right" class="col-sep">1,037</td><td style="text-align:right">10</td><td style="text-align:right" class="col-sep">983</td><td style="text-align:right">9</td><td style="text-align:right" class="col-sep">1,029</td><td style="text-align:right">10</td><td style="text-align:right" class="col-sep">1,008</td><td style="text-align:right">8</td></tr>
+                    <tr><td>mp42aac</td><td style="text-align:right" class="col-sep">3,012</td><td style="text-align:right">70</td><td style="text-align:right" class="col-sep">2,718</td><td style="text-align:right">46</td><td style="text-align:right" class="col-sep">2,891</td><td style="text-align:right">49</td><td style="text-align:right" class="col-sep">2,876</td><td style="text-align:right">44</td></tr>
+                    <tr><td>pdftotext</td><td style="text-align:right" class="col-sep">8,503</td><td style="text-align:right">69</td><td style="text-align:right" class="col-sep">&ndash;</td><td style="text-align:right">&ndash;</td><td style="text-align:right" class="col-sep">8,017</td><td style="text-align:right">52</td><td style="text-align:right" class="col-sep">8,205</td><td style="text-align:right">65</td></tr>
+                    <tr><td>tiffsplit</td><td style="text-align:right" class="col-sep">2,217</td><td style="text-align:right">24</td><td style="text-align:right" class="col-sep">&ndash;</td><td style="text-align:right">&ndash;</td><td style="text-align:right" class="col-sep">1,928</td><td style="text-align:right">11</td><td style="text-align:right" class="col-sep">1,934</td><td style="text-align:right">10</td></tr>
+                    <tr><td>tcpdump</td><td style="text-align:right" class="col-sep">6,187</td><td style="text-align:right">8</td><td style="text-align:right" class="col-sep">5,724</td><td style="text-align:right">7</td><td style="text-align:right" class="col-sep">5,912</td><td style="text-align:right">5</td><td style="text-align:right" class="col-sep">5,983</td><td style="text-align:right">7</td></tr>
+                    <tr><td>wav2swf</td><td style="text-align:right" class="col-sep">5,712</td><td style="text-align:right">15</td><td style="text-align:right" class="col-sep">5,147</td><td style="text-align:right">13</td><td style="text-align:right" class="col-sep">6,358</td><td style="text-align:right">13</td><td style="text-align:right" class="col-sep">5,570</td><td style="text-align:right">15</td></tr>
+                    <tr><td>lame</td><td style="text-align:right" class="col-sep">3,478</td><td style="text-align:right">4</td><td style="text-align:right" class="col-sep">3,215</td><td style="text-align:right">4</td><td style="text-align:right" class="col-sep">3,316</td><td style="text-align:right">3</td><td style="text-align:right" class="col-sep">3,351</td><td style="text-align:right">4</td></tr>
+                    <tr><td>nm</td><td style="text-align:right" class="col-sep">4,253</td><td style="text-align:right">11</td><td style="text-align:right" class="col-sep">3,876</td><td style="text-align:right">6</td><td style="text-align:right" class="col-sep">4,108</td><td style="text-align:right">4</td><td style="text-align:right" class="col-sep">4,127</td><td style="text-align:right">5</td></tr>
+                    <tr><td>objdump</td><td style="text-align:right" class="col-sep">7,618</td><td style="text-align:right">10</td><td style="text-align:right" class="col-sep">7,012</td><td style="text-align:right">8</td><td style="text-align:right" class="col-sep">7,312</td><td style="text-align:right">6</td><td style="text-align:right" class="col-sep">7,425</td><td style="text-align:right">8</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-note">
+            <strong>RamFuzz(-B)</strong>: uses FormatFuzzer's original templates only.
+            <strong>RamFuzz(-S)</strong>: uses LLM templates with random component selection.
+            <strong>RamFuzz(GPT-4)</strong>: uses GPT-4 instead of GPT-5.3.
+            Both modules contribute independently; their combination yields the strongest results.
+        </p>
+
+        <!-- ── RQ2: Runtime Cost ── -->
+        <h3><span class="rq-label">RQ2</span> Runtime Cost</h3>
+        <p>
+            <strong>Offline synthesis:</strong> average 53 min per format (34&ndash;78 min), costing
+            $20.14 (GPT-5.3) or $14.61 (GPT-4) per format. All artifacts are reusable across programs
+            sharing the same input format.
+        </p>
+
+        <p class="table-caption">Throughput Over 24 h (millions of executions)</p>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th style="text-align:right">AFL++</th>
+                        <th style="text-align:right">G&sup2;Fuzz</th>
+                        <th style="text-align:right">AFLSmart</th>
+                        <th style="text-align:right">FormatFuzzer</th>
+                        <th style="text-align:right">RamFuzz</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>exiv2</td><td style="text-align:right">7.41 M</td><td style="text-align:right">7.14 M</td><td style="text-align:right">7.09 M</td><td style="text-align:right">7.04 M</td><td style="text-align:right">6.95 M</td></tr>
+                    <tr><td>ffmpeg</td><td style="text-align:right">10.35 M</td><td style="text-align:right">9.84 M</td><td style="text-align:right">9.64 M</td><td style="text-align:right">9.53 M</td><td style="text-align:right">9.28 M</td></tr>
+                    <tr><td>flvmeta</td><td style="text-align:right">16.73 M</td><td style="text-align:right">16.07 M</td><td style="text-align:right">&ndash;</td><td style="text-align:right">&ndash;</td><td style="text-align:right">13.92 M</td></tr>
+                    <tr><td>gdk</td><td style="text-align:right">8.36 M</td><td style="text-align:right">8.06 M</td><td style="text-align:right">7.71 M</td><td style="text-align:right">7.75 M</td><td style="text-align:right">7.65 M</td></tr>
+                    <tr><td>imginfo</td><td style="text-align:right">6.68 M</td><td style="text-align:right">6.43 M</td><td style="text-align:right">6.07 M</td><td style="text-align:right">6.17 M</td><td style="text-align:right">6.02 M</td></tr>
+                    <tr><td>jhead</td><td style="text-align:right">13.36 M</td><td style="text-align:right">12.91 M</td><td style="text-align:right">12.58 M</td><td style="text-align:right">12.49 M</td><td style="text-align:right">12.49 M</td></tr>
+                    <tr><td>mp3gain</td><td style="text-align:right">13.97 M</td><td style="text-align:right">13.21 M</td><td style="text-align:right">13.31 M</td><td style="text-align:right">13.18 M</td><td style="text-align:right">10.85 M</td></tr>
+                    <tr><td>mp42aac</td><td style="text-align:right">10.61 M</td><td style="text-align:right">9.98 M</td><td style="text-align:right">10.12 M</td><td style="text-align:right">9.91 M</td><td style="text-align:right">8.98 M</td></tr>
+                    <tr><td>pdftotext</td><td style="text-align:right">5.02 M</td><td style="text-align:right">4.74 M</td><td style="text-align:right">4.91 M</td><td style="text-align:right">&ndash;</td><td style="text-align:right">4.78 M</td></tr>
+                    <tr><td>tiffsplit</td><td style="text-align:right">9.74 M</td><td style="text-align:right">9.43 M</td><td style="text-align:right">&ndash;</td><td style="text-align:right">&ndash;</td><td style="text-align:right">9.64 M</td></tr>
+                    <tr><td>tcpdump</td><td style="text-align:right">9.63 M</td><td style="text-align:right">&ndash;</td><td style="text-align:right">8.87 M</td><td style="text-align:right">8.97 M</td><td style="text-align:right">8.77 M</td></tr>
+                    <tr><td>wav2swf</td><td style="text-align:right">12.61 M</td><td style="text-align:right">&ndash;</td><td style="text-align:right">11.63 M</td><td style="text-align:right">11.78 M</td><td style="text-align:right">10.41 M</td></tr>
+                    <tr><td>lame</td><td style="text-align:right">14.43 M</td><td style="text-align:right">&ndash;</td><td style="text-align:right">13.72 M</td><td style="text-align:right">13.62 M</td><td style="text-align:right">11.53 M</td></tr>
+                    <tr><td>nm</td><td style="text-align:right">10.62 M</td><td style="text-align:right">&ndash;</td><td style="text-align:right">9.84 M</td><td style="text-align:right">9.95 M</td><td style="text-align:right">9.87 M</td></tr>
+                    <tr><td>objdump</td><td style="text-align:right">5.15 M</td><td style="text-align:right">&ndash;</td><td style="text-align:right">4.89 M</td><td style="text-align:right">4.79 M</td><td style="text-align:right">4.74 M</td></tr>
+                    <tr style="border-top:2px solid var(--border);font-weight:600">
+                        <td><strong>Avg. Overhead</strong></td>
+                        <td style="text-align:right">0.0%</td>
+                        <td style="text-align:right">&minus;4.3%</td>
+                        <td style="text-align:right">&minus;6.0%</td>
+                        <td style="text-align:right">&minus;6.6%</td>
+                        <td style="text-align:right">&minus;10.8%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-note">
+            &ndash; indicates the tool does not support the required input format.
+            Overhead is relative to AFL++.
+        </p>
+
+        <!-- ── RQ3: 0-day Bug Detection ── -->
+        <h3><span class="rq-label">RQ3</span> 0-day Bug Detection in Real-World Programs</h3>
+        <p>
+            RamFuzz discovered <strong>104</strong> previously unknown bugs across 11 projects
+            and 28 command-line tools, compared to 21 by G&sup2;Fuzz and 10 by FormatFuzzer.
+            At the time of writing, 39 have been confirmed and 33 fixed by developers.
+        </p>
+
+        <p class="table-caption">Summary of Discovered 0-day Vulnerabilities</p>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Tools Tested</th>
+                        <th style="text-align:right">RamFuzz</th>
+                        <th style="text-align:right">G&sup2;Fuzz</th>
+                        <th style="text-align:right">FormatFuzzer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bento4</td>
+                        <td>14 tools</td>
+                        <td style="text-align:right" class="best">34</td>
+                        <td style="text-align:right">10</td>
+                        <td style="text-align:right">9</td>
+                    </tr>
+                    <tr>
+                        <td>FlatBuffers</td>
+                        <td>flatc</td>
+                        <td style="text-align:right" class="best">32</td>
+                        <td style="text-align:right">5</td>
+                        <td style="text-align:right">&ndash;</td>
+                    </tr>
+                    <tr>
+                        <td>GPAC</td>
+                        <td>gpac, MP4Box</td>
+                        <td style="text-align:right" class="best">13</td>
+                        <td style="text-align:right">3</td>
+                        <td style="text-align:right">1</td>
+                    </tr>
+                    <tr>
+                        <td>libsixel</td>
+                        <td>img2sixel, sixel2png</td>
+                        <td style="text-align:right" class="best">11</td>
+                        <td style="text-align:right">0</td>
+                        <td style="text-align:right">0</td>
+                    </tr>
+                    <tr>
+                        <td>miniaudio</td>
+                        <td>audioconverter</td>
+                        <td style="text-align:right" class="best">5</td>
+                        <td style="text-align:right">1</td>
+                        <td style="text-align:right">0</td>
+                    </tr>
+                    <tr>
+                        <td>libtiff</td>
+                        <td>3 tools</td>
+                        <td style="text-align:right" class="best">3</td>
+                        <td style="text-align:right">0</td>
+                        <td style="text-align:right">&ndash;</td>
+                    </tr>
+                    <tr>
+                        <td>FLAC</td>
+                        <td>flac</td>
+                        <td style="text-align:right" class="best">2</td>
+                        <td style="text-align:right">0</td>
+                        <td style="text-align:right">&ndash;</td>
+                    </tr>
+                    <tr>
+                        <td>Exiv2</td>
+                        <td>exiv2</td>
+                        <td style="text-align:right" class="best">1</td>
+                        <td style="text-align:right">0</td>
+                        <td style="text-align:right">&ndash;</td>
+                    </tr>
+                    <tr>
+                        <td>FreeType</td>
+                        <td>ftrandom</td>
+                        <td style="text-align:right">1</td>
+                        <td style="text-align:right">1</td>
+                        <td style="text-align:right">&ndash;</td>
+                    </tr>
+                    <tr>
+                        <td>libheif</td>
+                        <td>heif-enc</td>
+                        <td style="text-align:right" class="best">1</td>
+                        <td style="text-align:right">0</td>
+                        <td style="text-align:right">&ndash;</td>
+                    </tr>
+                    <tr>
+                        <td>libpng</td>
+                        <td>pngfix</td>
+                        <td style="text-align:right">1</td>
+                        <td style="text-align:right">1</td>
+                        <td style="text-align:right">0</td>
+                    </tr>
+                    <tr style="border-top:2px solid var(--border);font-weight:600">
+                        <td><strong>Total</strong></td>
+                        <td></td>
+                        <td style="text-align:right" class="best">104</td>
+                        <td style="text-align:right">21</td>
+                        <td style="text-align:right">10</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-note">
+            &ndash; indicates the tool does not support the required input format.
+            See <a href="vulnerabilities.html">full vulnerability list</a> for per-tool breakdown by type.
+        </p>
     </section>
 
     <!-- Disclosure -->
@@ -563,8 +1164,8 @@
 
 <script>
 function statusBadge(status) {
-    var cls = status === 'Confirmed' ? 'status-confirmed' :
-              status === 'Fixed' ? 'status-confirmed' : 'status-reported';
+    var cls = status === 'Fixed' ? 'status-fixed' :
+              status === 'Confirmed' ? 'status-confirmed' : 'status-reported';
     return '<span class="' + cls + '">' + status + '</span>';
 }
 
@@ -576,30 +1177,32 @@ function severityBadge(sev) {
          'background:#e8f5e9;color:#2e7d32;') + '">' + sev + '</span>';
 }
 
-fetch('vulnerabilities.json')
+fetch('vulnerabilities.json?v=' + Date.now())
     .then(function(r) { return r.json(); })
     .then(function(data) {
         // Stats
-        var projects = new Set();
-        var cveCount = 0, confirmedCount = 0;
+        var fixedCount = 0, confirmedFixedCount = 0, reportedCount = 0;
         data.forEach(function(v) {
-            if (v.id && v.id.indexOf('XXXXX') === -1) cveCount++;
-            if (v.status === 'Confirmed' || v.status === 'Fixed') confirmedCount++;
-            if (v.project) projects.add(v.project);
+            if (v.status === 'Fixed') { fixedCount++; confirmedFixedCount++; }
+            else if (v.status === 'Confirmed') confirmedFixedCount++;
+            else if (v.status === 'Reported') reportedCount++;
         });
+        document.getElementById('stat-fixed').textContent = fixedCount;
+        document.getElementById('stat-confirmed-fixed').textContent = confirmedFixedCount;
+        document.getElementById('stat-reported').textContent = reportedCount;
         document.getElementById('stat-total').textContent = data.length;
-        document.getElementById('stat-cve').textContent = cveCount;
-        document.getElementById('stat-confirmed').textContent = confirmedCount;
-        document.getElementById('stat-projects').textContent = projects.size;
 
-        // Preview table (show first 3)
-        var previewRows = data.slice(0, 3).map(function(v) {
+        // Sort: Fixed first, then Confirmed, then Reported
+        var statusOrder = {'Fixed': 0, 'Confirmed': 1, 'Reported': 2};
+        data.sort(function(a, b) { return (statusOrder[a.status] || 3) - (statusOrder[b.status] || 3); });
+
+        // Preview table (show first 5)
+        var previewRows = data.slice(0, 5).map(function(v) {
             return '<tr>' +
-                '<td>' + v.id + '</td>' +
                 '<td>' + v.project + '</td>' +
+                '<td><code>' + v.tool + '</code></td>' +
                 '<td>' + v.type + '</td>' +
                 '<td>' + severityBadge(v.severity) + '</td>' +
-                '<td>' + v.description + '</td>' +
                 '<td><code>' + v.file + '</code></td>' +
                 '<td>' + statusBadge(v.status) + '</td>' +
                 '</tr>';
