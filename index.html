@@ -598,32 +598,21 @@
     <section id="results" class="results-section">
         <h2>Results</h2>
         <p>
-            We evaluate RamFuzz on the
-            UNIFUZZ benchmark
-            (15 programs, 13 formats) and 15 real-world GitHub projects.
-            Each fuzzing experiment runs for 24 hours, repeated 5 times.
+            Each fuzzing experiment runs for 24 hours and is repeated five times.
+            We adopt edge coverage and the number of unique bugs as evaluation metrics.
+            Edge coverage is measured using <code>afl-showmap</code>; we report the average
+            across five runs. Unique bugs are identified by the call stack reported by
+            ASan, where two crashes sharing the same stack frames are considered duplicates;
+            we report the union across five runs.
             Full data and reproduction scripts are available in the
             <a href="#">experiment data</a> artifact.
+            We evaluate RamFuzz by answering three research questions:
         </p>
-
-        <div class="results-summary">
-            <div class="results-stat">
-                <span class="num">104</span>
-                <span class="label">0-day Bugs Found</span>
-            </div>
-            <div class="results-stat">
-                <span class="num">11 / 15</span>
-                <span class="label">Best Bug Detection</span>
-            </div>
-            <div class="results-stat">
-                <span class="num">10 / 15</span>
-                <span class="label">Best Coverage</span>
-            </div>
-            <div class="results-stat">
-                <span class="num">10.8%</span>
-                <span class="label">Avg. Overhead</span>
-            </div>
-        </div>
+        <ul style="margin-bottom:0.75rem">
+            <li><strong>RQ1: Detection Effectiveness.</strong> How effective is RamFuzz at detecting unique bugs and achieving code coverage?</li>
+            <li><strong>RQ2: Runtime Cost.</strong> What is the runtime overhead introduced by RamFuzz?</li>
+            <li><strong>RQ3: 0-day Bug Detection.</strong> Can RamFuzz effectively identify previously unknown bugs in real-world programs?</li>
+        </ul>
 
         <!-- ── Pilot Study ── -->
         <h3><span class="rq-label">Pilot Study</span> CVE Classification (132 CVEs)</h3>
@@ -1124,6 +1113,7 @@
             <sup>*</sup> Confirmed and fixed by developers.
             <sup>&dagger;</sup> Confirmed by developers.
             &ndash; Format not supported.
+            Full list available on the <a href="vulnerabilities.html">discovered vulnerabilities</a> page.
         </p>
     </section>
 
