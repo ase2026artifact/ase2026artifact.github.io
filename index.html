@@ -635,7 +635,7 @@
                         <td rowspan="5" style="font-weight:600;vertical-align:top">Violate (72.7%)</td>
                         <td>Upper-bound violation</td>
                         <td><code>CVE-2021-46848</code></td>
-                        <td style="text-align:right"><strong>42</strong></td>
+                        <td style="text-align:right"><strong>38</strong></td>
                     </tr>
                     <tr>
                         <td>Integer underflow</td>
@@ -650,7 +650,7 @@
                     <tr>
                         <td>Integer overflow</td>
                         <td><code>CVE-2017-14643</code></td>
-                        <td style="text-align:right">13</td>
+                        <td style="text-align:right">17</td>
                     </tr>
                     <tr>
                         <td>Unexpected value</td>
@@ -958,15 +958,15 @@
         <p class="table-note">
             <strong>RamFuzz(-B)</strong>: uses FormatFuzzer's original templates only.
             <strong>RamFuzz(-S)</strong>: uses LLM templates with random component selection.
-            <strong>RamFuzz(GPT-4)</strong>: uses GPT-4 instead of GPT-5.3.
+            <strong>RamFuzz(GPT-4)</strong>: uses GPT-4 instead of GPT-5.2.
             Both modules contribute independently; their combination yields the strongest results.
         </p>
 
         <!-- ── RQ2: Runtime Cost ── -->
         <h3><span class="rq-label">RQ2</span> Runtime Cost</h3>
         <p>
-            <strong>Offline synthesis:</strong> average 53 min per format (34&ndash;78 min), costing
-            $20.14 (GPT-5.3) or $14.61 (GPT-4) per format. All artifacts are reusable across programs
+            <strong>Offline synthesis:</strong> average 53 min per format (31&ndash;79 min), costing
+            $20.14 (GPT-5.2) or $14.61 (GPT-4) per format. All artifacts are reusable across programs
             sharing the same input format.
         </p>
 
